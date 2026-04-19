@@ -143,6 +143,36 @@ nav a:hover {
     border-radius: 8px;
     font-size: 16px;
     font-weight: bold;
+}
+
+.product-card button:hover {
+    background: #ff4757;
+}
+
+.product-card h3 {
+    padding: 15px 15px 5px;
+    font-size: 18px;
+    color: white;
+}
+
+.product-card .price {
+    padding: 0 15px;
+    color: #ff6b6b;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.product-card button {
+    margin: 15px;
+    padding: 12px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    width: calc(100% - 30px);
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
     transition: background 0.3s;
 }
 
