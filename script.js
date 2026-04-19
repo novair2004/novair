@@ -1,4 +1,4 @@
-// ========== 3D TO'LQINLI FON ==========
+// ========== 3D TO'LQINLI FON (QORA FON, OQ TO'LQINLAR) ==========
 (function() {
     const canvas = document.getElementById('wave-canvas');
     if (!canvas) return;
@@ -117,7 +117,6 @@
         vec2 uv = (FC - 0.5 * R) / MN;
         vec3 col = render(uv);
         col = clamp(col, 0.0, 1.0);
-        col = vec3(1.0) - col;
         O = vec4(col, 1.0);
     }`;
     
@@ -179,7 +178,7 @@
     render();
 })();
 
-// ========== MAHSULOTLAR VA SAVAT ==========
+// ========== MAHSULOTLAR ==========
 const products = [
     { id: 1, name: "Klassik futbolka", price: 120000, image: "https://picsum.photos/id/20/300/300" },
     { id: 2, name: "Jinsi shim", price: 250000, image: "https://picsum.photos/id/21/300/300" },
@@ -189,6 +188,7 @@ const products = [
     { id: 6, name: "Krasovkalar", price: 300000, image: "https://picsum.photos/id/25/300/300" }
 ];
 
+// ========== SAVAT ==========
 let cart = JSON.parse(localStorage.getItem('novair_cart')) || [];
 
 function saveCart() {
