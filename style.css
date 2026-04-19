@@ -73,13 +73,13 @@ nav a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 280px;
-    height: 280px;
+   width: 500px;
+height: 500px;
     background-image: url('logo.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.12;
+    opacity: 0.15;
     pointer-events: none;
 }
 
