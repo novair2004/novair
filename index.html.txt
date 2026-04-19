@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAIR – Zamonaviy kiyimlar</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="images/logo.png" alt="NOVAIR" style="height: 50px;">
+        <p>ESTD 2026</p>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="#">Erkaklar</a></li>
+            <li><a href="#">Ayollar</a></li>
+            <li><a href="#">Chegirmalar</a></li>
+        </ul>
+    </nav>
+    <div class="cart" onclick="location.href='cart.html'">
+        🛒 Savat (<span id="cartCount">0</span>)
+    </div>
+</header>
+
+<div class="banner">
+    <h2>2026 YANGI KOLLEKSIYA</h2>
+    <p>Birinchi xaridingizga 20% chegirma!</p>
+    <button onclick="scrollToProducts()">Xarid qilish</button>
+</div>
+
+<div class="products" id="products">
+    <!-- Mahsulotlar shu yerga keladi -->
+</div>
+
+<footer>
+    <p>© 2026 NOVAIR. Barcha huquqlar himoyalangan.</p>
+    <p>📞 +998 90 123 45 67 | 📧 info@novair.uz</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOVAIR – Savat</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cart-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        .cart-item-info {
+            flex: 1;
+            margin-left: 15px;
+        }
+        .cart-item-price {
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+        .cart-total {
+            text-align: right;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .checkout-btn {
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 30px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .empty-cart {
+            text-align: center;
+            padding: 50px;
+            color: #888;
+        }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            color: #ff6b6b;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">
+    <img src="images/logo.png" alt="NOVAIR" style="height: 50px;">
+</a>
+        <p>ESTD 2026</p>
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="#">Erkaklar</a></li>
+            <li><a href="#">Ayollar</a></li>
+        </ul>
+    </nav>
+    <div class="cart" onclick="location.href='cart.html'">
+        🛒 Savat (<span id="cartCount">0</span>)
+    </div>
+</header>
+
+<div class="cart-container">
+    <h2>🛍️ Sizning savatingiz</h2>
+    <div id="cartItems"></div>
+    <div id="cartTotal" class="cart-total"></div>
+    <button class="checkout-btn" onclick="checkout()">📦 Buyurtma berish</button>
+    <div style="text-align: center;">
+        <a href="index.html" class="back-btn">← Savdoni davom ettirish</a>
+    </div>
+</div>
+
+<script>
+    let cart = JSON.parse(localStorage.getItem('novair_cart')) || [];
+
+    function updateCartCount() {
+        const cartCountElem = document.getElementById('cartCount');
+        if (cartCountElem) {
+            cartCountElem.innerText = cart.length;
+        }
+    }
+
+    function displayCart() {
+        const container = document.getElementById('cartItems');
+        const totalContainer = document.getElementById('cartTotal');
+        
+        if (!container) return;
+        
+        if (cart.length === 0) {
+            container.innerHTML = '<div class="empty-cart">🛒 Savatingiz bo‘sh. Mahsulot qo‘shish uchun bosh sahifaga qayting.</div>';
+            totalContainer.innerHTML = '';
+            return;
+        }
+        
+        let total = 0;
+        let html = '';
+        
+        cart.forEach((item, index) => {
+            total += item.price;
+            html += `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-info">
+                        <h3>${item.name}</h3>
+                        <p>${item.price.toLocaleString()} so'm</p>
+                    </div>
+                    <button onclick="removeItem(${index})" style="background:#ff6b6b; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">🗑️</button>
+                </div>
+            `;
+        });
+        
+        container.innerHTML = html;
+        totalContainer.innerHTML = `Jami: ${total.toLocaleString()} so'm`;
+    }
+    
+    function removeItem(index) {
+        cart.splice(index, 1);
+        localStorage.setItem('novair_cart', JSON.stringify(cart));
+        displayCart();
+        updateCartCount();
+    }
+    
+    function checkout() {
+        if (cart.length === 0) {
+            alert("Savatingiz bo'sh!");
+            return;
+        }
+        alert("Buyurtma qabul qilindi! Tez orada siz bilan bog'lanamiz.");
+    }
+    
+    displayCart();
+    updateCartCount();
+</script>
+
+<footer>
+    <p>© 2026 NOVAIR. Barcha huquqlar himoyalangan.</p>
+    <p>📞 +998 90 123 45 67 | 📧 info@novair.uz</p>
+</footer>
+
+</body>
+</html>
