@@ -91,34 +91,35 @@
         return clamp(1.0 - 3.0 * occ, 0.0, 1.0) * (0.5 + 0.5 * n.y);
     }
     
-    vec3 render(vec2 uv) {
-        vec3 col = vec3(1);
-        vec3 p = vec3(0, 0, -30);
-        vec3 rd = N(vec3(uv, 1));
-        if (march(p, rd)) {
-            col = vec3(0);
-            vec3 n = norm(p);
-            vec3 lp = vec3(0, 10, -20);
-            vec3 l = N(lp - p);
-            float dif = clamp(dot(l, n), 0.0, 1.0);
-            float ao = calcAO(p, n);
-            float shd = shadow(p + n * 5e-2, lp);
-            float spe = pow(clamp(dot(reflect(rd, n), l), 0.0, 1.0), 15.0);
-            float fre = pow(clamp(1.0 + dot(rd, n), 0.0, 1.0), 5.0);
-            col += 0.5 + dif * dif * shd * ao;
-            col = mix(spe * vec3(1), col, fre);
-            col = tanh(col * col);
-            col = pow(col, vec3(0.4545));
-        }
-        return col;
+   vec3 render(vec2 uv) {
+    vec3 col = vec3(0);  // 1 dan 0 ga o'zgartirildi
+    vec3 p = vec3(0, 0, -30);
+    vec3 rd = N(vec3(uv, 1));
+    if (march(p, rd)) {
+        col = vec3(0);
+        vec3 n = norm(p);
+        vec3 lp = vec3(0, 10, -20);
+        vec3 l = N(lp - p);
+        float dif = clamp(dot(l, n), 0.0, 1.0);
+        float ao = calcAO(p, n);
+        float shd = shadow(p + n * 5e-2, lp);
+        float spe = pow(clamp(dot(reflect(rd, n), l), 0.0, 1.0), 15.0);
+        float fre = pow(clamp(1.0 + dot(rd, n), 0.0, 1.0), 5.0);
+        col += 0.5 + dif * dif * shd * ao;
+        col = mix(spe * vec3(1), col, fre);
+        col = tanh(col * col);
+        col = pow(col, vec3(0.4545));
     }
-    
-    void main() {
-        vec2 uv = (FC - 0.5 * R) / MN;
-        vec3 col = render(uv);
-        col = clamp(col, 0.0, 1.0);
-        O = vec4(col, 1.0);
-    }`;
+    return col;
+}
+
+void main() {
+    vec2 uv = (FC - 0.5 * R) / MN;
+    vec3 col = render(uv);
+    col = clamp(col, 0.0, 1.0);
+    col = vec3(1.0) - col;  // Qora fon, oq to'lqinlar
+    O = vec4(col, 1.0);
+}
     
     function createShader(gl, type, source) {
         const shader = gl.createShader(type);
