@@ -95,14 +95,18 @@ nav a:hover {
     padding: 50px;
     max-width: 1200px;
     margin: 0 auto;
+    justify-content: center;
+    align-items: center;
 }
 
 .product-card {
-    background: white;
+    background: rgba(0, 0, 0, 0.75);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     transition: transform 0.3s;
+    text-align: center;
+    backdrop-filter: blur(2px);
 }
 
 .product-card:hover {
@@ -113,12 +117,12 @@ nav a:hover {
     width: 100%;
     height: 280px;
     object-fit: cover;
-    background: #ddd;
 }
 
 .product-card h3 {
     padding: 15px 15px 5px;
     font-size: 18px;
+    color: white;
 }
 
 .product-card .price {
@@ -131,18 +135,20 @@ nav a:hover {
 .product-card button {
     margin: 15px;
     padding: 12px;
-    background: #1a1a2e;
+    background: #ff6b6b;
     color: white;
     border: none;
     width: calc(100% - 30px);
     cursor: pointer;
     border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background 0.3s;
 }
 
 .product-card button:hover {
-    background: #ff6b6b;
+    background: #ff4757;
 }
-
 footer {
     background: #1a1a2e;
     color: white;
