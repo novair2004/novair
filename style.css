@@ -191,3 +191,27 @@ footer p {
         font-size: 32px;
     }
 }
+/* 3D to'lqinli fon */
+#wave-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    display: block;
+    background: #000;
+}
+
+/* Kontentni fon ustida ko'rinadigan qilish */
+header, .products, footer, .banner, .cart {
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
+    margin: 15px;
+    padding: 20px;
+}
+
+body {
+    background: transparent;
+}
