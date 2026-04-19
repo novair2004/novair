@@ -6,8 +6,9 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: transparent;
-    color: #fff;
+    background: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 100%);
+    color: #1a1a2e;
+    min-height: 100vh;
 }
 
 /* 3D to'lqinli fon */
