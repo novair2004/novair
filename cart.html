@@ -10,16 +10,16 @@
             max-width: 800px;
             margin: 50px auto;
             padding: 20px;
-            background: white;
+            background: rgba(0, 0, 0, 0.85);
             border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
         .cart-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #333;
         }
         .cart-item img {
             width: 60px;
@@ -31,6 +31,9 @@
             flex: 1;
             margin-left: 15px;
         }
+        .cart-item-info h3 {
+            color: white;
+        }
         .cart-item-price {
             font-weight: bold;
             color: #ff6b6b;
@@ -40,6 +43,7 @@
             padding: 20px;
             font-size: 24px;
             font-weight: bold;
+            color: white;
         }
         .checkout-btn {
             background: #ff6b6b;
@@ -50,6 +54,9 @@
             border-radius: 30px;
             cursor: pointer;
             width: 100%;
+        }
+        .checkout-btn:hover {
+            background: #ff4757;
         }
         .empty-cart {
             text-align: center;
@@ -62,17 +69,26 @@
             color: #ff6b6b;
             text-decoration: none;
         }
+        .remove-btn {
+            background: #ff6b6b;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
 
+<canvas id="wave-canvas"></canvas>
+
 <header>
-  <div class="logo">
-    <a href="index.html">
-        <img src="logo.png" alt="NOVAIR" style="height: 50px;">
-    </a>
-    <p>ESTD 2026</p>
-</div>
+    <div class="logo">
+        <a href="index.html">
+            <img src="logo.png" alt="NOVAIR" style="height: 50px;">
+        </a>
+        <p>ESTD 2026</p>
+    </div>
     <nav>
         <ul>
             <li><a href="index.html">Bosh sahifa</a></li>
@@ -86,7 +102,7 @@
 </header>
 
 <div class="cart-container">
-    <h2>🛍️ Sizning savatingiz</h2>
+    <h2 style="color: white;">🛍️ Sizning savatingiz</h2>
     <div id="cartItems"></div>
     <div id="cartTotal" class="cart-total"></div>
     <button class="checkout-btn" onclick="checkout()">📦 Buyurtma berish</button>
@@ -127,9 +143,9 @@
                     <img src="${item.image}" alt="${item.name}">
                     <div class="cart-item-info">
                         <h3>${item.name}</h3>
-                        <p>${item.price.toLocaleString()} so'm</p>
+                        <p class="cart-item-price">${item.price.toLocaleString()} so'm</p>
                     </div>
-                    <button onclick="removeItem(${index})" style="background:#ff6b6b; border:none; padding:8px 15px; border-radius:5px; cursor:pointer;">🗑️</button>
+                    <button class="remove-btn" onclick="removeItem(${index})">🗑️ O'chirish</button>
                 </div>
             `;
         });
