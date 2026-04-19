@@ -6,23 +6,47 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f8f9fa;
-    color: #333;
+    background: transparent;
+    color: #fff;
 }
 
+/* 3D to'lqinli fon */
+#wave-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    display: block;
+    background: #000;
+}
+
+/* Kontentni markazga joylash */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header */
 header {
-    background: #1a1a2e;
-    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 50px;
     flex-wrap: wrap;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
+    margin: 15px auto;
+    padding: 20px 30px;
+    max-width: 1200px;
 }
 
-.logo h1 {
-    font-size: 28px;
-    letter-spacing: 2px;
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 .logo p {
@@ -58,13 +82,14 @@ nav a:hover {
     background: #ff4757;
 }
 
+/* Banner */
 .banner {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
     text-align: center;
-    padding: 100px 20px;
-    position: relative;
-    overflow: hidden;
+    padding: 80px 20px;
+    border-radius: 20px;
+    margin: 15px auto;
+    max-width: 1200px;
 }
 
 .banner h2 {
@@ -88,17 +113,21 @@ nav a:hover {
     font-weight: bold;
 }
 
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 30px;
-    padding: 50px;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-content: center;
-    align-items: center;
+.banner button:hover {
+    background: #ff4757;
 }
 
+/* Mahsulotlar grid - MARKAZDA */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+/* Har bir mahsulot kartasi */
 .product-card {
     background: rgba(0, 0, 0, 0.75);
     border-radius: 15px;
@@ -106,7 +135,6 @@ nav a:hover {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3);
     transition: transform 0.3s;
     text-align: center;
-    backdrop-filter: blur(2px);
 }
 
 .product-card:hover {
@@ -149,49 +177,33 @@ nav a:hover {
     background: #ff4757;
 }
 
-.product-card h3 {
-    padding: 15px 15px 5px;
-    font-size: 18px;
-    color: white;
-}
-
-.product-card .price {
-    padding: 0 15px;
-    color: #ff6b6b;
-    font-size: 22px;
-    font-weight: bold;
-}
-
-.product-card button {
-    margin: 15px;
-    padding: 12px;
-    background: #ff6b6b;
-    color: white;
-    border: none;
-    width: calc(100% - 30px);
-    cursor: pointer;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-.product-card button:hover {
-    background: #ff4757;
-}
+/* Footer */
 footer {
-    background: #1a1a2e;
-    color: white;
     text-align: center;
-    padding: 40px;
-    margin-top: 50px;
+    padding: 30px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(3px);
+    border-radius: 20px;
+    margin: 15px auto;
+    max-width: 1200px;
 }
 
 footer p {
     margin: 10px 0;
 }
 
-@media (max-width: 768px) {
+/* Telefon uchun moslashuv */
+@media (max-width: 900px) {
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
+    
     header {
         flex-direction: column;
         gap: 15px;
@@ -203,35 +215,7 @@ footer p {
         gap: 10px;
     }
     
-    .products {
-        padding: 20px;
-    }
-    
     .banner h2 {
         font-size: 32px;
     }
-}
-/* 3D to'lqinli fon */
-#wave-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -2;
-    display: block;
-    background: #000;
-}
-
-/* Kontentni fon ustida ko'rinadigan qilish */
-header, .products, footer, .banner, .cart {
-    background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(3px);
-    border-radius: 20px;
-    margin: 15px;
-    padding: 20px;
-}
-
-body {
-    background: transparent;
 }
