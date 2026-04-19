@@ -78,14 +78,15 @@ nav a:hover {
 
 /* BANNER */
 .banner {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     text-align: center;
     padding: 80px 20px;
     margin: 15px auto;
     max-width: 1200px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 .banner h2 {
