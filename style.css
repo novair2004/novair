@@ -67,22 +67,6 @@ nav a:hover {
     overflow: hidden;
 }
 
-.banner::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-   width: 500px;
-height: 500px;
-    background-image: url('logo.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.15;
-    pointer-events: none;
-}
-
 .banner h2 {
     font-size: 48px;
     margin-bottom: 20px;
